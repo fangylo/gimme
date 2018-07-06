@@ -49,14 +49,14 @@
         - jellyfish
         - numpy
         - picard
-        - primer3
-        - repeatmasker
+        # - primer3
+        # - repeatmasker
         - samtools
         - scipy
         - snpeff
         - vardict
         - vcftools
-        - viennarna
+        # - viennarna
 
     - name: tell GNU parallel you will cite
       become: False
