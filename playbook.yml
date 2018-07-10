@@ -56,6 +56,10 @@
         - snpeff
         - vardict
         - vcftools
+        - pindel
+        - strelka
+        - somatic-sniper
+        - varscan
         # - viennarna
 
     - name: tell GNU parallel you will cite

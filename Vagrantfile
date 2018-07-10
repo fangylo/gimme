@@ -31,4 +31,9 @@ Vagrant.configure('2') do |config|
     ansible.playbook = 'playbook.yml'
     ansible.compatibility_mode = '2.0'
   end
+
+  config.vm.provider "aws" do |aws|
+    aws.block_device_mapping = [{ 'DeviceName' => '/dev/sda1', 'Ebs.VolumeSize' => 2500 }]
+  end
+
 end
