@@ -22,6 +22,7 @@ Vagrant.configure('2') do |config|
         'Name'  => ENV['AWS_INSTANCE_TAG_NAME'],
         'Owner' => ENV['AWS_INSTANCE_TAG_OWNER']
     }
+    aws.instance_ready_timeout = 640
 
     override.ssh.username         = 'ec2-user'
     override.ssh.private_key_path = ENV['PRIVATE_KEY_PATH']
