@@ -22,6 +22,7 @@ Vagrant.configure('2') do |config|
         'Name'  => ENV['AWS_INSTANCE_TAG_NAME'],
         'Owner' => ENV['AWS_INSTANCE_TAG_OWNER']
     }
+    aws.instance_ready_timeout = 1000
 
     override.ssh.username         = 'ec2-user'
     override.ssh.private_key_path = ENV['PRIVATE_KEY_PATH']
@@ -31,4 +32,10 @@ Vagrant.configure('2') do |config|
     ansible.playbook = 'playbook.yml'
     ansible.compatibility_mode = '2.0'
   end
+
+  config.vm.provider "aws" do |aws|
+  #   aws.block_device_mapping = [{ 'DeviceName' => '/dev/sda1', 'Ebs.VolumeSize' => 1000 }]
+    aws.block_device_mapping = [{ 'DeviceName' => '/dev/xvda', 'Ebs.VolumeSize' => 3000, 'Ebs.VolumeType' => 'gp2' }]
+  end
+
 end
