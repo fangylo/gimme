@@ -3,6 +3,9 @@ require 'vagrant-env'
 
 Vagrant.configure('2') do |config|
   config.env.enable
+  
+  config.vm.synced_folder ".", "/vagrant", type: "rsync",
+    rsync__exclude: ".git/"
 
   config.vm.box = 'aws-dummy'
   config.vm.provider 'aws' do |aws, override|
