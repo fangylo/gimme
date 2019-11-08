@@ -3,11 +3,14 @@ require 'vagrant-env'
 
 Vagrant.configure('2') do |config|
   config.env.enable
-  
+
   config.vm.synced_folder ".", "/vagrant", type: "rsync",
     rsync__exclude: ".git/"
 
   config.vm.box = 'aws-dummy'
+  config.ssh.forward_agent = true
+  config.ssh.forward_x11 = true
+
   config.vm.provider 'aws' do |aws, override|
     aws.ami           = ENV['AWS_AMI']
     aws.instance_type = ENV['AWS_INSTANCE_TYPE']
